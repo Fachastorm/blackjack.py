@@ -107,6 +107,26 @@ def hit_or_stand(deck, hand):
             print("Sorry, I did not understand that. Please enter h or s only!")
             continue
 
+def show_some(player, dealer):
+
+    print('Dealers Hand:')
+    print('One card hidden!')
+    print(dealer.cards[1])
+    print('\n')
+    print('Players Hand:')
+    for card in player.cards:
+        print(card)
+
+def show_all(player, dealer):
+    print('Dealers Hand:')
+    for card in dealer.cards:
+        print(card)
+    print('\n')
+    print('Players Hand:')
+    for card in player.cards:
+        print(card)
+
+
 def player_busts(player, dealer, chips):
     print('Player busts!')
     chips.lose_bet()
@@ -122,6 +142,6 @@ def dealer_busts(player, dealer, chips):
 def dealer_wins(player, dealer, chips):
     print('Dealer Wins!')
     chips.lose_bet()
-    
+
 def push(player, dealer, chips):
     print('Push')
