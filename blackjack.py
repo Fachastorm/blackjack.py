@@ -40,4 +40,33 @@ class Deck():
 # print(test_deck)
 
 class Hand():
-    pass
+    def __init__(self):
+        self.cards = []
+        self.value = 0 
+        self.aces = 0 
+    
+    def add_card(self, card):
+        #card passed in 
+        #from Deck.deal() --> single Card(suit, rank)
+        self.cards.append(card)
+        self.value += values[card.rank] #dictionary lookup of values
+
+        #track aces 
+        if card.rank == 'Ace':
+            self.aces += 1
+         
+    def adjust_for_aces(self):
+        while self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
+
+class Chips():
+    def __init__(self, total=100):
+        self.total = total #Has a default and can be set by user
+        self.bet = 0
+    
+    def win_bet(self):
+        self.total += self.bet
+    
+    def lose_bet(self):
+        self.total -= self.bet
